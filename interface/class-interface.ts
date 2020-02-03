@@ -1,18 +1,33 @@
+// 实例的接口描述
 interface ClockInterface {
-    currentTime: Date
-    setTime(d: Date): void
+    tick(): void
 }
-class ClocK implements ClockInterface {
-    currentTime!: Date
+// 构造器的接口描述
+interface ClockConstructor {
+    new(hour: number, minute: number): ClockInterface
+}
+function createClock(Ctor: ClockConstructor, h: number, m: number): ClockInterface {
+    return new Ctor(h, m)
+}
+class DigitalClock implements ClockInterface {
     constructor(h: number, m: number) {
-        const now = new Date
-        now.setHours(h)
-        now.setMinutes(m)
-        this.setTime(now)
+
     }
-    setTime(d: Date) {
-        this.currentTime = d
+    tick() {
+        console.log('beep beep')
+    }
+}
+class AnalogClock implements ClockInterface {
+    constructor(h: number, m: number) {
+
+    }
+    tick() {
+        console.log('tick toc')
     }
 }
 
-console.log(new ClocK(2, 3))
+const digital = createClock(DigitalClock, 12, 12)
+const analog = createClock(AnalogClock, 13, 13)
+
+console.log(digital)
+console.log(analog)
