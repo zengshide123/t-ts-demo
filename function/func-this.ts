@@ -1,26 +1,15 @@
-interface Card {
-    suit: string
-    card: number
+interface UIElement {
+    addClickListener(onclick: (this: void, e: Event) => void): void
 }
-interface Deck {
-    suits: Array<string>
-    cards: number[]
-    createCardPicker(): () => Card
-}
-let deck: Deck = {
-    suits: ['hearts', 'spades', 'clubs', 'diamonds'],
-    cards: Array(52),
-    createCardPicker(this: Deck) {
-        return () => {
-            let pickedCard = Math.floor(Math.random() * 52)
-            let pickedSuit = Math.floor(pickedCard / 13)
-            return {
-                suit: this.suits[pickedSuit],
-                card: pickedCard % 13
-            }
-        }
+class Handler {
+    type: string | undefined
+    onClickBad = (e: Event) => {
+        this.type = e.type
     }
 }
-let cardPicker = deck.createCardPicker()
-let pickedCard = cardPicker()
-console.log('pickedCard: ', pickedCard);
+
+let h = new Handler
+let uiElement: UIElement = {
+    addClickListener() { }
+}
+uiElement.addClickListener(h.onClickBad)
