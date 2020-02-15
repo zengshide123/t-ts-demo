@@ -1,32 +1,19 @@
-export default class Animal {
-    constructor(private name: string) {
-
-    }
-    move(distance: number = 0) {
-        console.log(`${this.name} moved ${distance}m`)
-    }
-}
-
-class Rhino extends Animal {
-    constructor() {
-        super('Rhino')
-    }
-}
-
-class Employee {
-    constructor(private name: string) {
-
-    }
-    move(distance: number = 5) {
+export default class Person {
+    constructor(protected name: string) {
 
     }
 }
+class Employee extends Person {
+    constructor(name: string, private department: string) {
+        super(name)
+    }
+    getElevatorPitch(){
+        return `Hello, my name is ${this.name} and I wol in ${this.department}`
+    }
+}
 
-let animal = new Animal('Goat')
-let rhino = new Rhino()
-let employee = new Employee('Blob')
-
-// name 的类型声明用的同一个源
-animal = rhino
-// name 的类型声明用的不是同一个源
-animal = employee
+let howard = new Employee('Howard','Sales')
+// private 子类可以使用
+console.log(howard.getElevatorPitch())
+// private 实例不可以使用
+// console.log(howard.name)
