@@ -1,5 +1,4 @@
-// 可选参数必须放置在后面
-function buildName(firstName: string, lastName?: string): string {
+function buildName(firstName: string, lastName = 'Rechial'): string {
     if (lastName) {
         return firstName + ' ' + lastName
     } else {
