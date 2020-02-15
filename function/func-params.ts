@@ -1,10 +1,8 @@
 function buildName(firstName: string, lastName = 'Rechial'): string {
-    if (lastName) {
-        return firstName + ' ' + lastName
-    } else {
-        return firstName
-    }
+    return firstName + ' ' + lastName
 }
 
 let result1 = buildName('Bob')
 console.log('result1: ', result1);
+let result2 = buildName('John', 'Smith')
+console.log('result2: ', result2);
