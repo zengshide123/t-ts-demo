@@ -1,5 +1,5 @@
 export default class Person {
-    constructor(protected name: string) {
+    protected constructor(protected name: string) {
 
     }
 }
@@ -17,3 +17,10 @@ let howard = new Employee('Howard','Sales')
 console.log(howard.getElevatorPitch())
 // private 实例不可以使用
 // console.log(howard.name)
+
+
+// constructor
+// public 无限制
+// protected 子类声明,子类不能用
+// private 类声明和实例都不能用
+// let person = new Person('Jhon')
